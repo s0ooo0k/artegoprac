@@ -1,0 +1,166 @@
+
+<!-- logged in main page-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ArtEgo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+    body{background-color: #DAD9D9;color: #365264;font-family: Arial;}
+    header{text-align:center;font-size:50px;font-family:Arial, bold;padding:20px;}
+    nav{padding:5px;overflow:hidden;text-align:right;}
+    nav a{font-size:15px;display:block;color:#365264;text-decoration:none;}
+    nav li{list-style:none;display:inline-block;padding:5px;}
+    h2{font-family: Arial; font-size: 36px; font-weight: lighter;}
+    .wrapper{width: 1000px;margin: 20px auto;text-align: left;border:none;}
+
+    /*Month Cell*/
+    li{list-style-type: none;}
+    .month{padding-top: 40px; padding-bottom: 40px; width: 100%; background-color:#365264; text-align: center;color: white;
+      font-size: 20px;letter-spacing: 3px; text-transform: uppercase;}
+    .left{float: left;}
+    .right{float: right;}
+    .arrow{color: white; font-size: 20px; cursor: pointer; outline: none; background-color: #365264;
+           border:none;}
+
+    /*Weekday Cell*/
+    .weekday{background-color: #365264; color: white; #365264;padding-top:10px; padding-bottom: 10px;font-size: 15px;}
+    .weekday li {padding: 10px 0; display: inline-block; width: 13.6%; text-align: center;letter-spacing: 2px;}
+
+    /*date Cell*/
+
+    .date{background-color: white; width: 100%;height: 450px; vertical-align: top; font-size: 20px;}
+    .dates{width: 13.6%;vertical-align:text-top;padding: 5px;}
+    .dates img{display: block; max-height: 100%; }
+
+    /*my wish list*/
+    #wish-list-container:: after{content: ""; clear: both; display: table;}
+    .myPoster{float: left; width: 20%; height: auto; margin-right:20px;}
+    .myPoster img {width: 100%;}
+    </style>
+</head>
+<body>
+  <div class = "wrapper" id = "myCalendarPage">
+    <!--fixed UI until **---------------------------------------------->
+    <section id = "menu-container">
+      <nav>
+        <ul>
+          <li><a href = "{% url 'main' %}"><i class = "fa fa-fw fa-home"></i>HOME</a></li>
+          <li><a href = "{% url 'event' %}"><i class = "fa fa-fw fa-star"></i>EVENT</a></li>
+          <li><a href = "{% url 'calendar' %}"><i class = "fa fa-fw fa-calendar"></i>MY CALENDAR</a></li>
+          <li><a href = "{% url 'account:logout' %}"><i class = "fa fa-fw fa-user"></i>LOG OUT</a></li>
+        </ul>
+      </nav>
+      <!--Logo-->
+      <header>ArtEgo</header>
+    </section>
+    <!-- ** -------------------------------------------------------->
+    <section id = "calendar-container">
+      <h2>My Calendar</h2>
+        <div class = "month">
+          <li class = "left"><button class = "arrow"><i class = "fa fa-fw fa-arrow-left"></button></i></li>
+          <li class = "right"><button class = "arrow"><i class = "fa fa-fw fa-arrow-right"></button></i></li>
+          <li id = "thisMonth"></li>
+        </div>
+        <div class = "weekday">
+            <li>SUN</li>
+            <li>MON</li>
+            <li>TUE</li>
+            <li>WED</li>
+            <li>THU</li>
+            <li>FRI</li>
+            <li>SAT</li>
+        </div>
+              <table class = "date">
+                  <!--first week-->
+                  <tr class = "week1">
+                    <td class = "dates"></td><td class = "dates"></td><td class = "dates"></td>
+                    <td class = "dates"></td><td class = "dates"></td><td class = "dates"></td><td class = "dates"></td>
+                  </tr>
+                    <tr class = "week2"><td class = "dates"></td><td class = "dates"></td><td class = "dates"></td>
+                    <td class = "dates"></td><td class = "dates"></td><td class = "dates"></td><td class = "dates"></td>
+                  </tr>
+                  <tr class = "week3">
+                    <td class = "dates">
+
+                    </td>
+                    <td class = "dates"></td><td class = "dates"></td>
+                    <td class = "dates"></td><td class = "dates"></td><td class = "dates"></td><td class = "dates"></td>
+                  </tr>
+                  <tr class = "week4">
+                    <td class = "dates"></td><td class = "dates"></td><td class = "dates"></td>
+                    <td class = "dates"></td><td class = "dates"></td><td class = "dates"></td><td class = "dates"></td>
+                  </tr>
+                  <tr class = "week5">
+                    <td class = "dates"></td><td class = "dates"></td><td class = "dates"></td>
+                    <td class = "dates"></td><td class = "dates"></td><td class = "dates"></td><td class = "dates"></td>
+                  </tr>
+            </table>
+    </section>
+    <section id = "wish-list-container">
+      <h2>My Wish List</h2>
+      <div id = "myExhibitions">
+        <div class = "myPoster">
+          <a href = "review.html">
+            <img src = "http://58.234.158.21:8081/Upload/Image/20170217/00000000000000016304.jpg">
+          </a>
+        </div>
+        <div class = "myPoster">
+          <a href = "review.html">
+            <img src = "http://58.234.158.21:8081/Upload/Image/20170217/00000000000000016304.jpg">
+          </a>
+        </div>
+        <div class = "myPoster">
+          <a href = "review.html">
+            <img src = "http://58.234.158.21:8081/Upload/Image/20170217/00000000000000016304.jpg">
+          </a>
+        </div>
+      </div>
+      <div id = "myGoods">
+      </div>
+    </section>
+  </div>
+
+  <script>
+    var today = new Date();
+    var year = today.getFullYear();
+    var month = today.getMonth();
+    var day = today.getDate();
+
+    var calendarDate = document.getElementsByClassName("dates");
+    var startDay = new Date(year, month, 1).getDay();
+
+    var months = ["January", "February", "March", "April", "May", "June", "July",
+                  "August", "September", "October", "November", "December",];
+    for(var i = 0; i < 12; i++){
+        if(month == i) document.getElementById('thisMonth').innerHTML = months[i];
+    }
+
+    var num = 0;
+
+    if(month == 1) num = 28;
+    else if(month == 3 || month == 5 || month == 8 || month == 10) num = 30;
+    else num = 31;
+
+    for(var j = 1; j <= startDay; j++){
+      calendarDate[startDay - j].innerHTML = (num + 1 - j);
+      calendarDate[startDay - j].style.color = '#7AA0B7';
+    }
+    calendarDate[startDay].innerHTML = 1;
+    var cnt = 2;
+    for(var j = startDay + 1; j < startDay + num; j++){
+      calendarDate[j].innerHTML = cnt;
+      cnt += 1;
+    }
+    var count = 1;
+    for(j = startDay + num; j < 35; j++){
+      calendarDate[j].innerHTML = count;
+      calendarDate[j].style.color = '#7AA0B7';
+      count += 1;
+    }
+  </script>
+</body>
+</html>

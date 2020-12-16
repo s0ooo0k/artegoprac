@@ -9,9 +9,10 @@ class Information(models.Model):
         ('N', 'not yet'),
     )
     title=models.CharField(max_length=200)
+    image=models.ImageField(upload_to='images/', default="")
     info_data=models.TextField()
     wish=models.CharField(max_length=1, choices=WISH, default='N')
-
+    
     def __str__(self):
         return self.title
 

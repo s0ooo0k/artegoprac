@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.static import static
+from django.conf import settings
 import information.views
 import information.forms
 # import account.views
@@ -22,9 +24,11 @@ import information.forms
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', information.views.main, name="main"),
+    path('event/', information.views.event, name="event"),
+    path('calendar/', information.views.calendar, name="calendar"),
     path('info/', information.views.info, name="info"),
     path('info/<int:blog_id>', information.views.detail, name="detail"),
     path('info/comment/<int:blog_id>', information.views.add_comment, name="add_comment"),
     path('search/', information.views.search, name="search"),
     path('account/', include('account.urls')),
-]
+]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

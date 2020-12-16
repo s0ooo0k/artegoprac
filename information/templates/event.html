@@ -1,0 +1,140 @@
+<!-- event page-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+      <title>ArtEgo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+      body{background-color: #DAD9D9;color: #365264;font-family: Arial;}
+      header{text-align:center;font-size:50px;font-family:Arial, bold;padding:20px;}
+      nav{padding:5px;overflow:hidden;text-align:right;}
+      nav a{font-size:15px;display:block;color:#365264;text-decoration:none;}
+      nav li{list-style:none;display:inline-block;padding:5px;}
+      h2{font-family: Arial; font-weight: lighter; font-size: 36px;}
+      .wrapper{width: 1000px;margin: 20px auto;text-align: left;border:none;}
+
+      #event-container{padding:30px;}
+      .poster-container {background-color:black;position: relative; width: 400px;height:600px;}
+      .dot-container{text-align:center; width:400px};
+      .poster {display: none;}
+      .poster img{max-width:100%; max-height:100%;}
+      .prev, .next {cursor: pointer;position: absolute;top: 50%;width: auto;padding: 16px;
+        margin-top: -22px;color: white;font-weight: bold;font-size: 18px;transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;user-select: none;}
+      .next {right: 0;border-radius: 3px 0 0 3px;}
+      .prev:hover, .next:hover {background-color: rgba(0,0,0,0.8);}
+      .text {color: #f2f2f2;font-size: 15px;padding: 8px 12px;position: absolute;bottom: 8px;width: 100%;text-align: center;}
+      .numbertext {color: #f2f2f2;padding: 8px 12px;position: absolute;top: 0;}
+      .dot {cursor: pointer;height: 15px;width: 15px;margin: 0 2px;background-color: #bbb;
+        border-radius: 50%;display: inline-block;transition: background-color 0.6s ease;}
+      .active, .dot:hover {background-color: #717171;}
+      .fade {
+        -webkit-animation-name: fade;
+        -webkit-animation-duration: 1.5s;
+        animation-name: fade;
+        animation-duration: 1.5s;
+      }
+
+      .goods-container {position:relative; width: 1000px;}
+
+      @-webkit-keyframes fade {
+        from {opacity: .4}
+        to {opacity: 1}
+      }
+      @keyframes fade {
+        from {opacity: .4}
+        to {opacity: 1}
+      }
+      @media only screen and (max-width: 300px) {
+        .prev, .next,.text {font-size: 11px}
+      }
+    </style>
+  </head>
+  <body>
+    <!--fixed UI until **---------------------------------------------->
+    <div class = "wrapper" id = "eventPage">
+      <section id = "menu-container">
+        <nav>
+          <ul>
+            <li><a href="{%url 'info' %}"><i class="fa fa-fw fa-home"></i>HOME</a></li>
+            <li><a href="{% url 'event' %}"><i class="fa fa-fw fa-star"></i>EVENT</a></li>
+            <li><a href="{% url 'calendar' %}"><i class="fa fa-fw fa-calendar"></i>MY CALENDAR</a></li>
+            <li><a href="{% url 'account:logout' %}"><i class="fa fa-fw fa-user"></i>LOG OUT</a></li>
+          </ul>
+        </nav>
+        <!--Logo-->
+        <header>ArtEgo</header>
+      </section>
+      <!-- ** -------------------------------------------------------->
+      <section id = "event-container">
+        <h2>EVENTS</h2>
+
+        <div class="poster-container">
+          <div class="poster fade">
+            <div class="numbertext">1 / 3</div>
+
+              <img src = "http://spacelifes.com/wp-content/uploads/2017/09/2.jpg">
+
+            <div class="text" >Discount 30%</div>
+          </div>
+          <div class="poster fade">
+            <div class="numbertext">2 / 3</div>
+
+              <img src= "http://58.234.158.21:8081/Upload/Image/20170217/00000000000000016304.jpg" >
+
+            <div class="text" >Free</div>
+          </div>
+          <div class="poster fade">
+
+            <div class="numbertext">3 / 3</div>
+            <img src= "http://www.art114.kr/files/attach/images/1337/112/598/1cda2cc1b363963a6909cbed521df07d.jpg">
+            <div class="text" href = "review.html">Opening Event</div>
+
+          </div>
+          <a class="prev" onclick="plusSlides(-1)"><i class = "fa fa-fw fa-arrow-left"></i></a>
+          <a class="next" onclick="plusSlides(1)"><i class = "fa fa-fw fa-arrow-right"></i></a>
+        </div>
+        <br>
+        <div class = "dot-container">
+          <span class="dot" onclick="currentSlide(1)"></span>
+          <span class="dot" onclick="currentSlide(2)"></span>
+          <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+        <h2>GOODS</h2>
+        <div class = "goods-container"></div>
+      </section>
+              </div>
+
+      <script>
+      var slideIndex = 1;
+      showSlides(slideIndex);
+
+      function plusSlides(n) {
+        showSlides(slideIndex += n);
+      }
+
+      function currentSlide(n) {
+        showSlides(slideIndex = n);
+      }
+
+      function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("poster");
+        var dots = document.getElementsByClassName("dot");
+        if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";
+        dots[slideIndex-1].className += " active";
+        }
+    </script>
+
+  </body>
+</html>

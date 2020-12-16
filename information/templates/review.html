@@ -1,9 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ArtEgo</title>
+  <style>
+    body {
+      background-color: #DAD9D9;
+      color: #365264;
+      font-family: Arial;
+    }
+
+    header {
+      text-align: center;
+      font-size: 50px;
+      font-family: Arial, bold;
+      padding: 20px;
+    }
+
+    nav {
+      padding: 5px;
+      overflow: hidden;
+      text-align: right;
+    }
+
+    nav a {
+      font-size: 15px;
+      display: block;
+      color: #365264;
+      text-decoration: none;
+    }
+
+    nav li {
+      list-style: none;
+      display: inline-block;
+      padding: 5px;
+    }
+
+    .wrapper {
+      width: 1000px;
+      margin: 20px auto;
+      text-align: left;
+      border: none;
+    }
+
+    .button {
+      color: #365264;
+      background-color: #DAD9D9;
+      border: 0;
+      outline: 0;
+      cursor: pointer;
+    }
+
+    /*intro-container*/
+    #enter-container {
+      position: relative;
+      margin: 10px;
+      text-align: center;
+    }
+
+    #frontPage {
+      text-align: center;
+    }
+
+    #intro-container {
+      position: relative;
+      margin-left: 20%;
+      margin-right: 20%;
+    }
+
+    /*poster*/
+    .poster0 {
+      position: relative;
+      width: 100%;
+    }
+
+    .image0 {
+      position: relative;
+      top: 0;
+      left: 0;
+      max-width: 100%;
+    }
+
+    .overlay0 {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      width: 100%;
+      opacity: 0;
+      transition: .5s ease;
+      background-color: rgba(194, 203, 208, 0.5)
+    }
+
+    .poster0:hover .overlay0 {
+      opacity: 1;
+    }
+
+    .text {
+      color: white;
+      font-size: 30px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      text-decoration: none;
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+    }
+
+    body{background-color: #DAD9D9;color: #365264;font-family: Arial;}
+    header{text-align:center;font-size:50px;font-family:Arial, bold;padding:20px;}
+    nav{padding:5px;overflow:hidden;text-align:right;}
+    nav a{font-size:15px;display:block;color:#365264;text-decoration:none;}
+    nav li{list-style:none;display:inline-block;padding:5px;}
+    h2{font-family: Arial; font-size: 36px;}
+    .wrapper{width: 1000px;margin: 20px auto;text-align: left;border:none;}
+
+    /*search*/
+    .button{color: #365264;background-color:#DAD9D9;border:0;outline:0;cursor: pointer;}
+    #search-engine{text-align:center;}
+    #search-engine input{font-family: Verdana;text-align:left;width:40%;height: 25px;
+      border: 2px solid #365264;outline:0;}
+    #search-engine button{font-size:20px;}
+    #region-search {text-align:right;}
+    #region-search button{font-family:Verdana, bold;font-size:15px; padding-bottom:5px;}
+    .map {display: none;position: fixed;z-index: 1;padding-top: 100px;left: 0;top: 0;
+      width: 100%;height: 100%;overflow: auto;background-color: rgba(0,0,0,0.4);}
+    .map-container {background-color: #edf0f1;margin: auto;padding: 20px;border: 1px solid #888;
+      width: 60%; height: 80%;}
+    .close {color: #365264;float: right;font-size: 28px;font-weight: bold;padding: 10px;}
+    .close:hover,
+    .close:focus {color: #000;text-decoration: none;cursor: pointer;}
+
+    /*poster-list*/
+    #image1{
+      clip:rect(0px, 1000px, 400px, 0px);}
+    #image2{clip:rect(400px, 1000px, 800px, 0px);}
+    #image3{clip:rect(800px, 1000px, 1200px, 0px);}
+    #overlay2 {top:400px;}
+    #overlay3{top:800px;}
+    .poster{position: absolute; width: 1000px;}
+    .image{position:absolute;width:1000px;}
+    .overlay {position: absolute; top: 0; bottom: 0; left: 0; right: 0;height: 400px; width: 1000px;
+      opacity: 0; transition: .5s ease; background-color: rgba(194, 203, 208,0.5)}
+    .poster:hover .overlay {opacity: 1;}
+    .text {color: white;font-size: 30px;position: absolute;top: 50%;left: 50%;text-decoration: none;
+      -webkit-transform: translate(-50%, -50%);-ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);text-align: right;}
+
+      #view-more-container{display:block; border:1px solid;}
+
+    .reposter{
+      position:relative;
+    }
+    .posterimage{
+      width:1000px;
+      height:400px;
+      clip:rect(0px, 1000px, 400px, 0px);
+    }
+    .postertext{
+      position:absolute;
+      text-align: center;
+      top:50%;
+      left:50%;
+      transform: trnaslate(-50%, -50%);
+    }
+
+      a:link{text-decoration : none}
+      a:visited{color:black;}
+  </style>
 </head>
 <body>
     <h2>Review</h2>

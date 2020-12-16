@@ -1,22 +1,312 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artego</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ArtEgo</title>
+  <style>
+    body {
+      background-color: #DAD9D9;
+      color: #365264;
+      font-family: Arial;
+    }
+
+    header {
+      text-align: center;
+      font-size: 50px;
+      font-family: Arial, bold;
+      padding: 20px;
+    }
+
+    nav {
+      padding: 5px;
+      overflow: hidden;
+      text-align: right;
+    }
+
+    nav a {
+      font-size: 15px;
+      display: block;
+      color: #365264;
+      text-decoration: none;
+    }
+
+    nav li {
+      list-style: none;
+      display: inline-block;
+      padding: 5px;
+    }
+
+    .wrapper {
+      width: 1000px;
+      margin: 20px auto;
+      text-align: left;
+      border: none;
+    }
+
+    .button {
+      color: #365264;
+      background-color: #DAD9D9;
+      border: 0;
+      outline: 0;
+      cursor: pointer;
+    }
+
+    /*intro-container*/
+    #enter-container {
+      position: relative;
+      margin: 10px;
+      text-align: center;
+    }
+
+    #frontPage {
+      text-align: center;
+    }
+
+    #intro-container {
+      position: relative;
+      margin-left: 20%;
+      margin-right: 20%;
+    }
+
+    /*poster*/
+    .poster0 {
+      position: relative;
+      width: 100%;
+    }
+
+    .image0 {
+      position: relative;
+      top: 0;
+      left: 0;
+      max-width: 100%;
+    }
+
+    .overlay0 {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      width: 100%;
+      opacity: 0;
+      transition: .5s ease;
+      background-color: rgba(194, 203, 208, 0.5)
+    }
+
+    .poster0:hover .overlay0 {
+      opacity: 1;
+    }
+
+    .text {
+      color: white;
+      font-size: 30px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      text-decoration: none;
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+    }
+
+    body{background-color: #DAD9D9;color: #365264;font-family: Arial;}
+    header{text-align:center;font-size:50px;font-family:Arial, bold;padding:20px;}
+    nav{padding:5px;overflow:hidden;text-align:right;}
+    nav a{font-size:15px;display:block;color:#365264;text-decoration:none;}
+    nav li{list-style:none;display:inline-block;padding:5px;}
+    h2{font-family: Arial; font-size: 36px;}
+    .wrapper{width: 1000px;margin: 20px auto;text-align: left;border:none;}
+
+    /*search*/
+    .button{color: #365264;background-color:#DAD9D9;border:0;outline:0;cursor: pointer;}
+    #search-engine{text-align:center;}
+    #search-engine input{font-family: Verdana;text-align:left;width:40%;height: 25px;
+      border: 2px solid #365264;outline:0;}
+    #search-engine button{font-size:20px;}
+    #region-search {text-align:right;}
+    #region-search button{font-family:Verdana, bold;font-size:15px; padding-bottom:5px;}
+    .map {display: none;position: fixed;z-index: 1;padding-top: 100px;left: 0;top: 0;
+      width: 100%;height: 100%;overflow: auto;background-color: rgba(0,0,0,0.4);}
+    .map-container {background-color: #edf0f1;margin: auto;padding: 20px;border: 1px solid #888;
+      width: 60%; height: 80%;}
+    .close {color: #365264;float: right;font-size: 28px;font-weight: bold;padding: 10px;}
+    .close:hover,
+    .close:focus {color: #000;text-decoration: none;cursor: pointer;}
+
+    /*poster-list*/
+    #image1{clip:rect(0px, 1000px, 400px, 0px);}
+    #image2{clip:rect(400px, 1000px, 800px, 0px);}
+    #image3{clip:rect(800px, 1000px, 1200px, 0px);}
+    #overlay2 {top:400px;}
+    #overlay3{top:800px;}
+    .poster{position: absolute; width: 1000px;}
+    .image{position:absolute;width:1000px;}
+    .overlay {position: absolute; top: 0; bottom: 0; left: 0; right: 0;height: 400px; width: 1000px;
+      opacity: 0; transition: .5s ease; background-color: rgba(194, 203, 208,0.5)}
+    .poster:hover .overlay {opacity: 1;}
+    .text {color: white;font-size: 30px;position: absolute;top: 50%;left: 50%;text-decoration: none;
+      -webkit-transform: translate(-50%, -50%);-ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);text-align: right;}
+
+      #view-more-container{display:block; border:1px solid;}
+  </style>
 </head>
+
 <body>
-    <h1>ARTEGO</h1>
-    <a href="{% url 'info' %}"><image src="https://miro.medium.com/max/965/1*-Rws9bRfgSaz0Ci09rhpCw.jpeg" weight="500" height="500"></image></a>
-    <br>
+  <div class="wrapper" id="frontPage">
+    <!--fixed UI until **---------------------------------------->
+    <section id="logged-out-main-container">
+
     {%if user.is_authenticated %}
     
-    <a href="{% url 'account:logout' %}"><p href="style=display:inlne">logout</p></a>
+
+    <div class="wrapper" id="mainPage">
+      <!--fixed UI until **---------------------------------------------->
+      <section id="menu-container">
+        <nav>
+          <ul>
+            <li><a href="{%url 'info' %}"><i class="fa fa-fw fa-home"></i>HOME</a></li>
+            <li><a href="{% url 'event' %}"><i class="fa fa-fw fa-star"></i>EVENT</a></li>
+            <li><a href="{% url 'calendar' %}"><i class="fa fa-fw fa-calendar"></i>MY CALENDAR</a></li>
+            <li><a href="{% url 'account:logout' %}"><i class="fa fa-fw fa-user"></i>LOG OUT</a></li>
+          </ul>
+        </nav>
+        <!--Logo-->
+        <header>ArtEgo</header>
+      </section>
+      <!-- ** -------------------------------------------------------->
+
+      <section id="logged-in-main-container">
+        <div id="search-engine">
+          <br><br>
+            <div>
+              <form method="GET" action="{% url 'search' %}">
+                  {% csrf_token %}
+                  <input type="search" name="q" value="{{q}}">
+                  <button type="submit">Search</button>
+              </form>
+        </div>
+        
+        </div>
+        <div id="region-search">
+
+          <!--onclick => map UI-->
+          <button id="mapButton" class="button">BY REGION</button>
+          <div id="showMap" class="map">
+            <div class="map-container">
+              <div class="close">&times;</div>
+              <div id="googleMap" style="width:100%;height:400px;"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--list of posters of the exhibitions-->
+
+      <section id="exhibition-list-container">
+
+        <div id="poster1" class="poster">
+          <img src="http://spacelifes.com/wp-content/uploads/2017/09/2.jpg" id="image1" class="image">
+          <div id="overlay1" class="overlay">
+            <a class="text" href="{% url 'info' %}">Best of 2020<br>10th Dec, 2020<br>Seoul</a>
+          </div>
+        </div>
+        <div id="poster2" class="poster">
+          <img src="http://58.234.158.21:8081/Upload/Image/20170217/00000000000000016304.jpg" id="image2" class="image">
+          <div id="overlay2" class="overlay">
+            <a class="text">Best of 2020<br>10th Dec, 2020<br>Seoul</a>
+          </div>
+        </div>
+        <div id="poster3" class="poster">
+          <img src="http://www.art114.kr/files/attach/images/1337/112/598/1cda2cc1b363963a6909cbed521df07d.jpg"
+            id="image3" class="image">
+          <div id="overlay3" class="overlay">
+            <a class="text">Best of 2020<br>10th Dec, 2020<br>Seoul</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- for more information -->
+      <section id="view-more-container">
+        <button id="more">VIEW MORE</button>
+      </section>
+    </div>
+    <div>
+        {% for information in informations.all %}
+         <div>
+            <h1><a href="{% url 'detail' information.id %}">{{information.title}}</a></h1>
+            <!-- <h1>{{information.wish}}</h1> -->
+        </div>
+        {% endfor %}
+    </div>
+
+    <script>
+      var modal = document.getElementById("showMap");
+      var btn = document.getElementById("mapButton");
+      var span = document.getElementsByClassName("close")[0];
+
+      //map-container
+      btn.onclick = function () {
+        modal.style.display = "block";
+      }
+      span.onclick = function () {
+        modal.style.display = "none";
+      }
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+
+      //google-map
+      function myMap() {
+        var mapProp = {
+          center: new google.maps.LatLng(51.508742, -0.120850),
+          zoom: 5,
+        };
+        var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+      }
+      //add marker
+      var marker = new google.maps.Marker({
+        position: myCenter
+      });
+      marker.setMap(map);
+
+      var infowindow = new google.maps.InfoWindow({
+        content: ""
+      });
+      google.maps.event.addListener(marker, 'click', function () {
+        infowindow.open(map, marker);
+      });
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=myMap"></script>
 
     {% else %}
-    <a href="{% url 'account:login' %}"><p href="style=display:inline">login</p></a>
-    <a href="{% url 'account:register' %}"></p style="display:inline">join</p></a>
-    {% endif %}
-
+    <section id = "logged-out-main-container">
+      <header>ArtEgo</header>
+    </section>
+    <!-- **----------------------------------------------->
+    <!--intro page-->
+      <h2>Exhibition of This Month</h2>
+    <section id="intro-container">
+      <div class="poster0">
+        <!--poster-->
+        <img
+          src="http://kor.theasian.asia/wp-content/uploads/2020/11/200929_%EB%A7%88%ED%8B%B0%EC%8A%A4%ED%8F%AC%EC%8A%A4%ED%84%B0RGB-620x882.jpg"
+          class="image0">
+        <div class="overlay0">
+          <a class="text" href="{% url 'info' %}">Best of 2020<br>10th Dec, 2020<br>Seoul</a>
+        </div>
+      </div>
+    </section>
+    <section id="enter-container">
+      <a href="{% url 'account:login' %}"><button id="logIn" class="button" style="font-size: 20px;">LOG IN</button></a>
+      <a href="{% url 'account:register' %}"><button id="join" class="button" style="font-size: 20px;">JOIN</button></a>
+    </section>
+  </div>
+  {% endif %}
 </body>
+
 </html>
