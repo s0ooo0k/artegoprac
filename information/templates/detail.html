@@ -1,0 +1,21 @@
+<h1>information</h1>
+
+<div>
+    <h1>{{information.title}}</h1>
+    <p>{{information.info_data}}</p>
+    <p>{{information.wish}}</p>
+</div>
+
+<div>
+    {% for comment in information.comments.all %}
+        <h3>{{comment.author_name}}</h3>
+        <p>{{comment.time}}</p>
+        <p>{{comment.comment_text}}</p>
+    {% empty %}
+    <p>No comments here yet</p>
+    {% endfor %}
+
+    <br>
+    <a href="{% url 'add_comment' information.id %}"><h2> new comment</h2></a>
+
+</div>

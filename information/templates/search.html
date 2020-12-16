@@ -1,0 +1,14 @@
+{% block content %}
+
+    {% if not informations %}
+        <h1>검색 결과가 없습니다</h1>
+
+    {% else %}
+
+        {% for information in informations.all %}
+            <h1>{{ information.title }}</h1>
+        {% endfor %}
+
+    {% endif %}
+
+{% endblock %}

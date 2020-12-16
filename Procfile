@@ -1,0 +1,1 @@
+web: gunicorn artego.wsgi --log-file -

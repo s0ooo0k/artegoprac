@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artego</title>
+</head>
+<body>
+    <h1>ARTEGO</h1>
+    <a href="{% url 'info' %}"><image src="https://miro.medium.com/max/965/1*-Rws9bRfgSaz0Ci09rhpCw.jpeg" weight="500" height="500"></image></a>
+    <br>
+    {%if user.is_authenticated %}
+    
+    <a href="{% url 'account:logout' %}"><p href="style=display:inlne">logout</p></a>
+
+    {% else %}
+    <a href="{% url 'account:login' %}"><p href="style=display:inline">login</p></a>
+    <a href="{% url 'account:register' %}"></p style="display:inline">join</p></a>
+    {% endif %}
+
+</body>
+</html>

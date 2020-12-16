@@ -1,0 +1,17 @@
+{%load widget_tweaks%}
+
+
+{%block content%}
+
+<div class="row">
+    <div class="col"></div>
+    <div class="'col-6">
+        <div class="alert alert-primary" role="alert">회원가입이 성공적으로 완료되었습니다!</div>
+        <br>
+        <p> 가입해주셔서 감사합니다.</p>
+        <p class="font-italic"><a href="{% url 'account:login' %}">login</a></p>
+    </div>
+    <div class="col"></div>
+</div>
+
+{%endblock%}
