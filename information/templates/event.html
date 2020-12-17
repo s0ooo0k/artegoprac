@@ -4,17 +4,23 @@
   <head>
     <meta charset="UTF-8">
       <title>ArtEgo</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-      body{background-color: #DAD9D9;color: #365264;font-family: Arial;}
-      header{text-align:center;font-size:50px;font-family:Arial, bold;padding:20px;}
-      nav{padding:5px;overflow:hidden;text-align:right;}
-      nav a{font-size:15px;display:block;color:#365264;text-decoration:none;}
-      nav li{list-style:none;display:inline-block;padding:5px;}
-      h2{font-family: Arial; font-weight: lighter; font-size: 36px;}
-      .wrapper{width: 1000px;margin: 20px auto;text-align: left;border:none;}
-
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Song+Myung&display=swap" rel="stylesheet">
+      <style>
+       body{background-color: #DAD9D9;color: #365264;font-family: "Song Myung";}
+        header{text-align:center;font-size:50px;font-family:"Lobster", bold;padding:20px;}
+        nav{padding:5px;overflow:hidden;text-align:right;}
+        nav a{font-size:15px;display:block;color:#365264;text-decoration:none;}
+        nav li{list-style:none;display:inline-block;padding:5px;}
+        h1{font-family: "Song Myung"; font-size: 36px; font-weight: lighter;}
+        h2{font-family: "Song Myung"; font-size: 36px; font-weight: lighter;}
+        p{font-size:20px;}
+    
+        .wrapper{width: 1000px;margin: 20px auto;text-align: left;border:none;}
+        .button{color: #365264;background-color:#DAD9D9;border:0;outline:0;cursor: pointer; font-family: "Song Myung";}
+    
       #event-container{padding:30px;}
       .poster-container {background-color:black;position: relative; width: 400px;height:600px;}
       .dot-container{text-align:center; width:400px};
@@ -53,6 +59,9 @@
     </style>
   </head>
   <body>
+    <section id="logged-out-main-container">
+      <header style="font-family:Lobster; font-size:80px;">ArtEgo</header>
+    </section>
     <!--fixed UI until **---------------------------------------------->
     <div class = "wrapper" id = "eventPage">
       <section id = "menu-container">
@@ -65,7 +74,7 @@
           </ul>
         </nav>
         <!--Logo-->
-        <header>ArtEgo</header>
+       
       </section>
       <!-- ** -------------------------------------------------------->
       <section id = "event-container">

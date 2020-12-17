@@ -15,4 +15,4 @@ class UserCreateDoneTV(TemplateView):
     template_name='account/register_done.html'
 
 def main(request):
-    return render(request, 'information/main.html')
+    return render(request, 'information/information.html')

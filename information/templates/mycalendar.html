@@ -7,16 +7,19 @@
     <title>ArtEgo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Song+Myung&display=swap" rel="stylesheet">
 
     <style>
-    body{background-color: #DAD9D9;color: #365264;font-family: Arial;}
-    header{text-align:center;font-size:50px;font-family:Arial, bold;padding:20px;}
+    body{background-color: #DAD9D9;color: #365264;font-family: "Song Myung";}
+    header{text-align:center;font-size:50px;font-family:"Lobster", bold;padding:20px;}
     nav{padding:5px;overflow:hidden;text-align:right;}
     nav a{font-size:15px;display:block;color:#365264;text-decoration:none;}
     nav li{list-style:none;display:inline-block;padding:5px;}
-    h2{font-family: Arial; font-size: 36px; font-weight: lighter;}
+    h2{font-family: "Song Myung"; font-size: 36px; font-weight: lighter;}
     .wrapper{width: 1000px;margin: 20px auto;text-align: left;border:none;}
 
+    a{font-size:15px;display:block;color:#365264;text-decoration:none;}
     /*Month Cell*/
     li{list-style-type: none;}
     .month{padding-top: 40px; padding-bottom: 40px; width: 100%; background-color:#365264; text-align: center;color: white;
@@ -37,25 +40,28 @@
     .dates img{display: block; max-height: 100%; }
 
     /*my wish list*/
-    #wish-list-container:: after{content: ""; clear: both; display: table;}
+    .wish-list-container:: after{content: ""; clear: both; display: table;}
     .myPoster{float: left; width: 20%; height: auto; margin-right:20px;}
     .myPoster img {width: 100%;}
+
+    #my-review-container{display: none;}
     </style>
 </head>
 <body>
   <div class = "wrapper" id = "myCalendarPage">
     <!--fixed UI until **---------------------------------------------->
     <section id = "menu-container">
+      <header>ArtEgo</header>
       <nav>
         <ul>
-          <li><a href = "{% url 'main' %}"><i class = "fa fa-fw fa-home"></i>HOME</a></li>
-          <li><a href = "{% url 'event' %}"><i class = "fa fa-fw fa-star"></i>EVENT</a></li>
-          <li><a href = "{% url 'calendar' %}"><i class = "fa fa-fw fa-calendar"></i>MY CALENDAR</a></li>
-          <li><a href = "{% url 'account:logout' %}"><i class = "fa fa-fw fa-user"></i>LOG OUT</a></li>
+          <li><a href="{%url 'info' %}"><i class="fa fa-fw fa-home"></i>HOME</a></li>
+            <li><a href="{% url 'event' %}"><i class="fa fa-fw fa-star"></i>EVENT</a></li>
+            <li><a href="{% url 'calendar' %}"><i class="fa fa-fw fa-calendar"></i>MY CALENDAR</a></li>
+            <li><a href="{% url 'account:logout' %}"><i class="fa fa-fw fa-user"></i>LOG OUT</a></li>
         </ul>
       </nav>
       <!--Logo-->
-      <header>ArtEgo</header>
+      
     </section>
     <!-- ** -------------------------------------------------------->
     <section id = "calendar-container">
@@ -84,11 +90,14 @@
                     <td class = "dates"></td><td class = "dates"></td><td class = "dates"></td><td class = "dates"></td>
                   </tr>
                   <tr class = "week3">
-                    <td class = "dates">
-
-                    </td>
-                    <td class = "dates"></td><td class = "dates"></td>
-                    <td class = "dates"></td><td class = "dates"></td><td class = "dates"></td><td class = "dates"></td>
+                    <td ><div style="text-align: center"><img src="https://gaijinpot.scdn3.secure.raxcdn.com/app/uploads/sites/6/2019/07/Teamlab1.jpg" 
+                      width="100px" height="70px" ></div></td>
+                    <td class = "dates"></td>
+                    <td class = "dates"></td>
+                    <td class = "dates"></td>
+                    <td class = "dates"></td>
+                    <td class = "dates"></td>
+                    <td class = "dates"></td>
                   </tr>
                   <tr class = "week4">
                     <td class = "dates"></td><td class = "dates"></td><td class = "dates"></td>
@@ -99,6 +108,11 @@
                     <td class = "dates"></td><td class = "dates"></td><td class = "dates"></td><td class = "dates"></td>
                   </tr>
             </table>
+
+    </section>
+    <section id = "my-review-container">
+        <h2>My Review</h2>
+        <div id = "my-review"></div>
     </section>
     <section id = "wish-list-container">
       <h2>My Wish List</h2>
@@ -125,6 +139,7 @@
   </div>
 
   <script>
+    //calendar
     var today = new Date();
     var year = today.getFullYear();
     var month = today.getMonth();
@@ -161,6 +176,21 @@
       calendarDate[j].style.color = '#7AA0B7';
       count += 1;
     }
+
+    //
+    var example = document.getElementById("example");
+    var container = document.getElementById("my-review-container");
+    var review = document.getElementById('my-review');
+
+    example.addEventListener("click", function(){
+      container.innerHTML = "review on the exhibition clicked";
+      if(container.style.display == "none") {
+        container.style.display = "block";
+      }else {
+        container.style.display = "none";
+      }
+    });
+
   </script>
 </body>
 </html>

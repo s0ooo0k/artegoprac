@@ -4,96 +4,221 @@
 <!--sign up page-->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>ArtEgo - Sign In</title>
+    <title>ArtEgo - Sign Up</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Song+Myung&display=swap" rel="stylesheet">
 
     <!--temporary style for modal------------------------------------------------------>
     <style>
-    body{background-color: #DAD9D9;color: #365264;font-family: Arial;}
-    header{text-align:center;font-size:50px;font-family:Arial, bold;padding:20px;}
+    body{background-color: #DAD9D9;color: #365264;font-family: "Song Myung";}
+    header{text-align:center;font-size:50px;font-family:"Lobster", bold;padding:20px;}
     nav{padding:5px;overflow:hidden;text-align:right;}
     nav a{font-size:15px;display:block;color:#365264;text-decoration:none;}
     nav li{list-style:none;display:inline-block;padding:5px;}
+    h1{font-family: "Song Myung"; font-size: 36px; font-weight: lighter;}
+    h2{font-family: "Song Myung"; font-size: 36px; font-weight: lighter;}
+    p{font-size:20px;}
+
     .wrapper{width: 1000px;margin: 20px auto;text-align: left;border:none;}
-    .button{color: #365264;background-color:#DAD9D9;border:0;outline:0;cursor: pointer;}
+    .button{color: #365264;background-color:#DAD9D9;border:0;outline:0;cursor: pointer; font-family: "Song Myung";}
 
 
+        /*modal*/
+        #sign-up-container {
+            text-align: center;
 
-    /*modal*/
-    .modal {display: none; position: fixed; z-index: 1; padding-top: 100px; left: 0;top: 0;
-      width: 100%; height: 100%; overflow: auto; background-color: rgb(0,0,0);background-color: rgba(0,0,0,0.4);}
-    .modal-content { position: relative; background-color: #fefefe; margin: auto; padding: 0;
-      border: 1px solid #888; width: 80%; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-      -webkit-animation-name: animatetop; -webkit-animation-duration: 0.4s; animation-name: animatetop; animation-duration: 0.4s}
-    @-webkit-keyframes animatetop {from {top:-300px; opacity:0} to {top:0; opacity:1}}
-    @keyframes animatetop {from {top:-300px; opacity:0} to {top:0; opacity:1}}
-    .close {color: white; float: right; font-size: 28px; font-weight: bold;}
-    .close:hover,
-    .close:focus {color: #000; text-decoration: none; cursor: pointer;}
-    .modal-header {padding: 2px 16px;background-color: #5cb85c;color: white;}
-    .modal-body {padding: 2px 16px;}
-    .modal-footer {padding: 2px 16px;background-color: #5cb85c;color: white;}
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: #fefefe;
+            margin: auto;
+            padding: 0;
+            border: 1px solid #888;
+            width: 80%;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            -webkit-animation-name: animatetop;
+            -webkit-animation-duration: 0.4s;
+            animation-name: animatetop;
+            animation-duration: 0.4s
+        }
+
+        @-webkit-keyframes animatetop {
+            from {
+                top: -300px;
+                opacity: 0
+            }
+
+            to {
+                top: 0;
+                opacity: 1
+            }
+        }
+
+        @keyframes animatetop {
+            from {
+                top: -300px;
+                opacity: 0
+            }
+
+            to {
+                top: 0;
+                opacity: 1
+            }
+        }
+
+        .close {
+            color: white;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-header {
+            padding: 2px 16px;
+            background-color: #5cb85c;
+            color: white;
+        }
+
+        .modal-body {
+            padding: 2px 16px;
+        }
+
+        .modal-footer {
+            padding: 2px 16px;
+            background-color: #5cb85c;
+            color: white;
+        }
     </style>
     <!-------------------------------------------------------------------------------->
 
 </head>
+
 <body>
-    
-<div class="row">
-    <div class="col"></div>
-    
-    <div class="'col-6">
+    <section id="logged-out-main-container">
+        <header style="font-family:Lobster; font-size:80px;">ArtEgo</header>
+      </section>
+    <section id="sign-up-container">
 
-        <h1>회원가입</h1>
-        <p>ID와 비밀번호를 입력하세요. 비밀번호는 두 번 입력해야합니다.</p>
-    
-        {%if form.errors %}
-        <div class="alert alert-danger">
-            <div class="font-weight-bold">아래에 나타난 오류를 해결해주세요!</div>
-            {{form.errors}}
-        </div>
-        {%endif%}
-    
-        <form action="." method="POST" class="card pt-3"> {%csrf_token%}
-            <div class="form-group row">
-                {{ form.username|add_label_class:"col-form-label col-sm-auto ml-3 font-weight-bold"}}
-            </div>
-    
-            <div class="col-sm-5">
-                {{ form.username|add_class:"form-control"|attr:"autofocus"}}
-            </div>
-    
-            <div class="form-group row">
-                {{form.password1|add_label_class:"col-form-label col-sm-auto ml-3 font-weight-bold"}}
-            </div>
-    
-            <div class="col-sm-5">
-                {{ form.password1|add_class:"form-control"}}
-            </div>    
-            
-            <div class="form-group row">
-                {{form.password2|add_label_class:"col-form-label col-sm-auto ml-3 font-weight-bold"}}
-            </div>
-    
-            <div class="col-sm-5">
-                {{ form.password2|add_class:"form-control"}}
-            </div>
-    
-            <div class="form-group">
-                <div class="offset-sm-9 col-sm-auto">
-                    <input type="submit" value="sign up" class="btn btn-info"/>
+        
+        <div>
+            <div class="row">
+                <div class="col"></div>
+
+                <div class="col-6">
+                    <br>
+                    <br>
+                    <br>
+                    <h1>회원가입</h1>
+                    <p>ID와 비밀번호를 입력하세요. 비밀번호는 두 번 입력해야합니다.</p>
+
+                    {%if form.errors %}
+                    <div class="alert alert-danger">
+                        <div class="font-weight-bold">아래에 나타난 오류를 해결해주세요!</div>
+                        {{form.errors}}
+                    </div>
+                    {%endif%}
+
+                    <form action="." method="POST" class="card pt-3"> {%csrf_token%}
+                        <div class="form-group row">
+                            {{ form.username|add_label_class:"col-form-label col-sm-auto ml-3 font-weight-bold"}}
+                        </div>
+
+                        <div class="col-sm-5">
+                            {{ form.username|add_class:"form-control"|attr:"autofocus"}}
+                        </div>
+
+                        <div class="form-group row">
+                            {{form.password1|add_label_class:"col-form-label col-sm-auto ml-3 font-weight-bold"}}
+                        </div>
+
+                        <div class="col-sm-5">
+                            {{ form.password1|add_class:"form-control"}}
+                        </div>
+
+                        <div class="form-group row">
+                            {{form.password2|add_label_class:"col-form-label col-sm-auto ml-3 font-weight-bold"}}
+                        </div>
+
+                        <div class="col-sm-5">
+                            {{ form.password2|add_class:"form-control"}}
+                        </div>
+
+                        <br>
+
+                        <div class="form-group row">
+                            <label class="col-form-label col-sm-auto ml-3 font-weight-bold">이전에도 전시회를 많이 다녀보셨나요?</label>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-lg-9">
+                                <select id="frequency" class="form-control" size="0">
+                                    <option value="often">자주 다녔다</option>
+                                    <option value="sometimes">가끔 다녔다</option>
+                                    <option value="hardly">거의 다니지 않았다</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <br>
+
+                        <div class="form-group row">
+                            <label class="col-form-label col-sm-auto ml-3 font-weight-bold">평소에 사진 찍고 올리는 것을
+                                좋아하시나요?</label>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-lg-9">
+                                <select id="frequency" class="form-control" size="0">
+                                    <option value="like">좋아한다</option>
+                                    <option value="soso">보통이다</option>
+                                    <option value="dontlike">좋아하지 않는다</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <br>
+
+                        <div class="form-group">
+                            <div class="offset-sm-9 col-sm-auto">
+                                <input type="submit" value="sign up" class="btn btn-info" />
+                            </div>
+                        </div>
+                    </form>
                 </div>
+
+                <div class="col"></div>
+
             </div>
-        </form>
-    </div>
-    
-    <div class="col"></div>
-
-</div>
-
+        </div>
+    </section>
 
 </body>
+
 </html>
 {%endblock%}

@@ -3,16 +3,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ArtEgo - Sign In</title>
+    <title>ArtEgo - Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Song+Myung&display=swap" rel="stylesheet">
+
     <style>
-    body{background-color: #DAD9D9;color: #365264;font-family: Arial;}
-    header{text-align:center;font-size:50px;font-family:Arial, bold;padding:20px;}
+    body{background-color: #DAD9D9;color: #365264;font-family: "Song Myung";}
+    header{text-align:center;font-size:50px;font-family:"Lobster", bold;padding:20px;}
     nav{padding:5px;overflow:hidden;text-align:right;}
     nav a{font-size:15px;display:block;color:#365264;text-decoration:none;}
     nav li{list-style:none;display:inline-block;padding:5px;}
+    h1{font-family: "Song Myung"; font-size: 36px; font-weight: lighter;}
+    h2{font-family: "Song Myung"; font-size: 36px; font-weight: lighter;}
+    p{font-size:20px;}
+
     .wrapper{width: 1000px;margin: 20px auto;text-align: left;border:none;}
-    .button{color: #365264;background-color:#DAD9D9;border:0;outline:0;cursor: pointer;}
+    .button{color: #365264;background-color:#DAD9D9;border:0;outline:0;cursor: pointer; font-family: "Song Myung";}
+
 
     #log-in-container{margin-left: 20%; margin-right:20%; height: 600px;text-align:center;}
     .input input{height: 36px;width: 400px; outline: 0; border: 0;background-color: #DAD9D9;}
@@ -24,8 +32,8 @@
 <body>
   <div class = "wrapper" id = "frontPage">
     <!--fixed UI until **---------------------------------------->
-    <section id = "logged-out-main-container">
-      <header>ArtEgo</header>
+    <section id="logged-out-main-container">
+      <header style="font-family:Lobster; font-size:80px;">ArtEgo</header>
     </section>
     <!-- **----------------------------------------------->
 
@@ -33,7 +41,8 @@
     <div class="row">
         <div class="col"></div>
         <div class="'col-6">
-            <div class="alert alert-primary" role="alert">
+            <div class="alert alert-primary" role="alert" style="font-size:25px">
+              <br>
                 Please enter your login information. </div>
             <form action="" method="post">
                 {% csrf_token %}

@@ -4,54 +4,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ArtEgo</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Song+Myung&display=swap" rel="stylesheet">
   <style>
-    body {
-      background-color: #DAD9D9;
-      color: #365264;
-      font-family: Arial;
-    }
+   body{background-color: #DAD9D9;color: #365264;font-family: "Song Myung";}
+    header{text-align:center;font-size:50px;font-family:"Lobster", bold;padding:20px;}
+    nav{padding:5px;overflow:hidden;text-align:right;}
+    nav a{font-size:15px;display:block;color:#365264;text-decoration:none;}
+    nav li{list-style:none;display:inline-block;padding:5px;}
+    h1{font-family: "Song Myung"; font-size: 36px; font-weight: lighter;}
+    h2{font-family: "Song Myung"; font-size: 36px; font-weight: lighter;}
+    p{font-family: "Song Myung";  font-size:20px;}
 
-    header {
-      text-align: center;
-      font-size: 50px;
-      font-family: Arial, bold;
-      padding: 20px;
-    }
+    .wrapper{width: 1000px;margin: 20px auto;text-align: left;border:none;}
+    .button{color: #365264;background-color:#DAD9D9;border:0;outline:0;cursor: pointer; font-family: "Song Myung";}
 
-    nav {
-      padding: 5px;
-      overflow: hidden;
-      text-align: right;
-    }
-
-    nav a {
-      font-size: 15px;
-      display: block;
-      color: #365264;
-      text-decoration: none;
-    }
-
-    nav li {
-      list-style: none;
-      display: inline-block;
-      padding: 5px;
-    }
-
-    .wrapper {
-      width: 1000px;
-      margin: 20px auto;
-      text-align: left;
-      border: none;
-    }
-
-    .button {
-      color: #365264;
-      background-color: #DAD9D9;
-      border: 0;
-      outline: 0;
-      cursor: pointer;
-    }
 
     /*intro-container*/
     #enter-container {
@@ -153,24 +121,46 @@
 
       #view-more-container{display:block; border:1px solid;}
 
-    .reposter{
-      position:relative;
+      .reposter {
+      position: relative;
     }
-    .posterimage{
-      width:1000px;
-      height:400px;
-      clip:rect(0px, 1000px, 400px, 0px);
-    }
-    .postertext{
-      position:absolute;
-      text-align: center;
-      top:50%;
-      left:50%;
-      transform: trnaslate(-50%, -50%);
+    .reposter:hover .overlay {opacity: 1;}
+    .posterimage {
+      width: 1000px;
+      height: 400px;
+      clip: rect(0px, 1000px, 400px, 0px);
+      vertical-align: middle;
     }
 
-      a:link{text-decoration : none}
-      a:visited{color:black;}
+    .postertext {
+      color: white;
+      font-size: 40px;
+      position: absolute;
+      text-align: center;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      font-family: "Song Myung";
+    }
+
+    a:link {
+      text-decoration: none
+    }
+
+    a:visited {
+      color: black;
+    }
+
+    .table {
+      border-collapse: collapse;
+      border-spacing: 0
+    }
+    li{
+      font-family: "Song Myung";
+      font-size: 30px;
+    }
   </style>
 </head>
 
@@ -179,7 +169,10 @@
     <!--fixed UI until **---------------------------------------->
     <section id="logged-out-main-container">
 
-    
+      <section id="logged-out-main-container">
+        <header style="font-family:Lobster; font-size:80px;">ArtEgo</header>
+      </section>
+  
     
 
     <div class="wrapper" id="mainPage">
@@ -194,12 +187,21 @@
           </ul>
         </nav>
         <!--Logo-->
-        <header>ArtEgo</header>
+  
       </section>
       <!-- ** -------------------------------------------------------->
 <body>
     {% for information in information.all %}
-        <a href="{% url 'detail' information.id %}">{{information.title}}</a><br>
+    <tr>
+      <div class="reposter">
+        <img class="posterimage" src="{{ information.image.url }}">
+        <div class="overlay">
+          <a class="postertext" href="{% url 'detail' information.id %}">{{information.title}}</a></h1>
+        </div>
+
+      </div>
+    </tr>
+       
         {% empty %}
           There is no exhibition keyword of "{{query}}""
     {% endfor %}
